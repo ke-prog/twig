@@ -1,7 +1,9 @@
 <?php
-     $products = ['product1', 'product2', 'product3', 'product4', 'product5'];
-    
-    $loader = new Twig_Loader_Filesystem (__DIR__.'/../View');
-    $twig = new Twig\Environment($loader);
-     
-     echo $twig->render('index.html.twig', $products = ['product1', 'product2', 'product3', 'product4', 'product5']);
+require '../vendor/autoload.php';
+
+$loader = new Twig\Loader\FilesystemLoader('../src/View');
+
+$twig = new Twig\Environment($loader, ['cache' => false]);
+$products = ['product1', 'product2', 'product3', 'product4', 'product5'];
+echo $twig->render('index.html.twig',array ('products' => $products) );
+?>
